@@ -1,52 +1,52 @@
-import React from "react";
-import Table from "./Table";
+import React from 'react'
+import Table from './Table'
 /*Add import statement here*/
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      buttonClicked: "",
+      buttonClicked: '',
       assignments: [] /*Below this line, add the students state variable*/,
-      grades: {}
-    };
+      grades: {},
+    }
 
-    this.handleButtonClicked = this.handleButtonClicked.bind(this);
-    this.addAssignment = this.addAssignment.bind(this);
+    this.handleButtonClicked = this.handleButtonClicked.bind(this)
+    this.addAssignment = this.addAssignment.bind(this)
     /*Uncomment the line below to bind the method*/
     /*this.addStudent = this.addStudent.bind(this);*/
-    this.addGrade = this.addGrade.bind(this);
+    this.addGrade = this.addGrade.bind(this)
   }
 
   handleButtonClicked(buttonName) {
     this.setState({
-      buttonClicked: buttonName
-    });
+      buttonClicked: buttonName,
+    })
   }
 
   /*Check out this addAssignment method*/
   addAssignment(assignmentName) {
     this.setState({
-      assignments: this.state.assignments.concat(assignmentName)
-    });
+      assignments: this.state.assignments.concat(assignmentName),
+    })
   }
 
   /*Write an addStudent method here*/
 
   addGrade(assignment, student, score) {
-    let grades = this.state.grades;
-    let assignmentName = assignment;
-    let studentName = student;
+    let grades = this.state.grades
+    let assignmentName = assignment
+    let studentName = student
     if (!(assignment in grades)) {
-      grades[assignmentName] = {};
+      grades[assignmentName] = {}
     }
-    grades[assignmentName][studentName] = score;
-    this.setState({ grades: grades });
+    grades[assignmentName][studentName] = score
+    this.setState({ grades: grades })
   }
 
   render() {
-    let tabChoice = <div />;
+    let tabChoice = <div />
 
     /*Uncomment below to render assignments*/
     /*if (this.state.buttonClicked === "assignments") {
@@ -89,26 +89,26 @@ class App extends React.Component {
       <div>
         <div className="Box Box--spacious f4">
           <div className="Box-header">
-            {/* Replace this line with the proper header code*/}
+            <h3 className="Box-title d-flex flex-justify-center">GradeBook</h3>
           </div>
         </div>
         <nav className="UnderlineNav d-flex flex-justify-center">
           <div className="UnderlineNav-body pt-6">
             <button
               className="btn btn-primary"
-              onClick={() => this.handleButtonClicked("assignments")}
+              onClick={() => this.handleButtonClicked('assignments')}
             >
               Assignments
             </button>
             <button
               className="btn btn-primary"
-              onClick={() => this.handleButtonClicked("students")}
+              onClick={() => this.handleButtonClicked('students')}
             >
               Students
             </button>
             <button
               className="btn btn-primary"
-              onClick={() => this.handleButtonClicked("grades")}
+              onClick={() => this.handleButtonClicked('grades')}
             >
               Grades
             </button>
@@ -116,8 +116,8 @@ class App extends React.Component {
         </nav>
         {tabChoice}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
