@@ -1,33 +1,33 @@
-import React from 'react'
+import React from "react";
 
 class List extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      value: '',
-    }
+      value: "",
+    };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value })
+    this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
     this.setState({
-      value: '',
-    })
+      value: "",
+    });
 
-    this.props.addFunction(this.state.value)
-    event.preventDefault()
+    this.props.addFunction(this.state.value);
+    event.preventDefault();
   }
 
   render() {
     return (
       <div className="col-6 mx-auto">
-        {/*Replace the code below to call the title prop*/}
+        {this.props.title}
         <p className="h2">REPLACE THIS TITLE WITH A PROP</p>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -45,14 +45,14 @@ class List extends React.Component {
           <div className="Box-header">{this.props.title}</div>
           {this.props.currList.map((item, index) => (
             <li className="Box-row" key={index}>
-              {' '}
-              {item}{' '}
+              {" "}
+              {item}{" "}
             </li>
           ))}
         </ul>
       </div>
-    )
+    );
   }
 }
 
-export default List
+export default List;
